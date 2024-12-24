@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+
+const testimonials = [
+	{ name: 'Gabriel', videoUrl: 'https://drive.google.com/file/d/1IkAB_Ky8RFaEaQ5p7obeUmhW--vCwKxM/view?usp=sharing' },
+	{ name: 'Lucas', videoUrl: 'https://drive.google.com/file/d/1WzJHORMMoZITgYJ97M2WozFUmPeLwDjR/view?usp=sharing' },
+	{ name: 'Cláudio Malaca', videoUrl: 'https://drive.google.com/file/d/16M1cQ0FNI27sLzc35536au5qoOKEv9lC/view?usp=sharing' },
+	{ name: 'Fran', videoUrl: 'https://drive.google.com/file/d/1CghnfHeOKPCdoQXHjNtpLGuIArUDhEcr/view?usp=sharing' },
+	{ name: 'Junior', videoUrl: 'https://drive.google.com/file/d/1TkX4vRhIR9wfpWBtMCLhnANiXwBppMFW/view?usp=sharing' },
+	{ name: 'Naomi', videoUrl: 'https://drive.google.com/file/d/1bgGW7gdigcbnVAqYlMeDt8lf1OeDh0qN/view?usp=sharing' },
+	{ name: 'Jabá', videoUrl: 'https://drive.google.com/file/d/1PJP5FKMEPw5gUr2FokNylyw6ovjC3I1x/view?usp=sharing' },
+	{ name: 'Fábio', videoUrl: 'https://drive.google.com/file/d/1C1BVRnF-QmA7Sky6X-MwtW_YbG_R_mmD/view?usp=sharing' },
+	{ name: 'Neusa', videoUrl: 'https://drive.google.com/file/d/1dihg7K2IZtavXQ8_eRkk4SFZQElB12es/view?usp=sharing' },
+	{ name: 'Mônica', videoUrl: 'https://drive.google.com/file/d/1aGI3aG1mPi2TbgEm2djgWx1TuhDpts9x/view?usp=sharing' },
+	{ name: 'Zezinho', videoUrl: 'https://drive.google.com/file/d/1x5RkDmk4A32jyOTSZEDQdfs-9mAHe7px/view?usp=sharing' },
+	{ name: 'Thaís', videoUrl: 'https://drive.google.com/file/d/1u0jgo7NM3RBSIX1S5V2YCApCRyETHnX8/view?usp=sharing' },
+	{ name: 'Cristina', videoUrl: 'https://drive.google.com/file/d/188mXevVbt9WvBDiI2pfTZz3j1tqBt5F3/view?usp=sharing' },
+	{ name: 'Tia Zezé', videoUrl: 'https://drive.google.com/file/d/1vdLfJuUNDxRdhCAQL1DXpDW0OdcU6XMz/view?usp=sharing' },
+	{ name: 'Carolina', videoUrl: 'https://drive.google.com/file/d/15KdR5R47zWF3UAeSxSHOAlhS9XvMwESk/view?usp=sharing' },
+	{ name: 'Suzana', videoUrl: 'https://drive.google.com/file/d/1qLn7CQg9e23Rc-ccLgRHU_RuimQt2Sp7/view?usp=sharing' },
+	{ name: 'Rúbia', videoUrl: 'https://drive.google.com/file/d/1lKUw6JMOxunatDxOa_u_WvY5Njz3G4Qs/view?usp=sharing' },
+	{ name: 'Roney', videoUrl: 'https://drive.google.com/file/d/1iH4M9pscSLWVRjCURJkXKDK9c8mMFKBE/view?usp=sharing' },
+	{ name: 'Nivaldo', videoUrl: 'https://drive.google.com/file/d/1hTgmlEryWJ48Qa3sRqVIYk7_OfrLZARc/view?usp=sharing' },
+	{ name: 'Carlão', videoUrl: 'https://drive.google.com/file/d/14RPjnVq9Tcnwy7pps8YdcobdawGA-fD2/view?usp=sharing' },
+	{ name: 'Marcelo', videoUrl: 'https://drive.google.com/file/d/1Zda-FD1EQ17-dKibemXylWe6ACVLnhmZ/view?usp=sharing' },
+	{ name: 'Danilo', videoUrl: 'https://drive.google.com/file/d/19ViK40dVAktCrPS-sUD0uczx4pfkvqlb/view?usp=sharing' },
+	{ name: 'Heloísa', videoUrl: 'https://drive.google.com/file/d/1KSCw2fLiP5WjJhrZb7knikIW0cCzHS3H/view?usp=sharing' },
+	{ name: 'Lígia', videoUrl: 'https://drive.google.com/file/d/1UMtB3iQm51jnhdmv4zOs0suWIue-xN0k/view?usp=sharing' },
+	{ name: 'Wânia', videoUrl: 'https://drive.google.com/file/d/1wM24QpqdnylorVZsNalzTJ9QhzjS7h6k/view?usp=sharing' },
+	{ name: 'Brian', videoUrl: 'https://drive.google.com/file/d/11qsknHYMjY4UeuDRFscr4q3N4n8ea8pb/view?usp=sharing' },
+	{ name: 'Jean', videoUrl: 'https://drive.google.com/file/d/1RVleL3FBwv1G51Wn39huw22dlmSamRVS/view?usp=sharing' },
+	{ name: 'Ana Lídia', videoUrl: 'https://drive.google.com/file/d/11OgLxPbmu1PB4eSfekHS1LSR_0sCbSsn/view?usp=sharing' },
+	{ name: 'Carlão', videoUrl: 'https://drive.google.com/file/d/14RPjnVq9Tcnwy7pps8YdcobdawGA-fD2/view?usp=sharing' },
+	{ name: 'Carolina', videoUrl: 'https://drive.google.com/file/d/15KdR5R47zWF3UAeSxSHOAlhS9XvMwESk/view?usp=sharing' },
+	{ name: 'Cláudio Malaca', videoUrl: 'https://drive.google.com/file/d/16M1cQ0FNI27sLzc35536au5qoOKEv9lC/view?usp=sharing' },
+	{ name: 'Cristina', videoUrl: 'https://drive.google.com/file/d/188mXevVbt9WvBDiI2pfTZz3j1tqBt5F3/view?usp=sharing' },
+	{ name: 'Danilo', videoUrl: 'https://drive.google.com/file/d/19ViK40dVAktCrPS-sUD0uczx4pfkvqlb/view?usp=sharing' },
+	{ name: 'Fábio', videoUrl: 'https://drive.google.com/file/d/1C1BVRnF-QmA7Sky6X-MwtW_YbG_R_mmD/view?usp=sharing' },
+	{ name: 'Fran', videoUrl: 'https://drive.google.com/file/d/1CghnfHeOKPCdoQXHjNtpLGuIArUDhEcr/view?usp=sharing' },
+	{ name: 'Gabriel', videoUrl: 'https://drive.google.com/file/d/1IkAB_Ky8RFaEaQ5p7obeUmhW--vCwKxM/view?usp=sharing' },
+	{ name: 'Heloísa', videoUrl: 'https://drive.google.com/file/d/1KSCw2fLiP5WjJhrZb7knikIW0cCzHS3H/view?usp=sharing' },
+	{ name: 'Jabá', videoUrl: 'https://drive.google.com/file/d/1PJP5FKMEPw5gUr2FokNylyw6ovjC3I1x/view?usp=sharing' },
+	{ name: 'Jean', videoUrl: 'https://drive.google.com/file/d/1RVleL3FBwv1G51Wn39huw22dlmSamRVS/view?usp=sharing' },
+	{ name: 'Junior', videoUrl: 'https://drive.google.com/file/d/1TkX4vRhIR9wfpWBtMCLhnANiXwBppMFW/view?usp=sharing' },
+	{ name: 'Lígia', videoUrl: 'https://drive.google.com/file/d/1UMtB3iQm51jnhdmv4zOs0suWIue-xN0k/view?usp=sharing' },
+	{ name: 'Lucas', videoUrl: 'https://drive.google.com/file/d/1WzJHORMMoZITgYJ97M2WozFUmPeLwDjR/view?usp=sharing' },
+	{ name: 'Marcelo', videoUrl: 'https://drive.google.com/file/d/1Zda-FD1EQ17-dKibemXylWe6ACVLnhmZ/view?usp=sharing' },
+	{ name: 'Mônica', videoUrl: 'https://drive.google.com/file/d/1aGI3aG1mPi2TbgEm2djgWx1TuhDpts9x/view?usp=sharing' },
+	{ name: 'Naomi', videoUrl: 'https://drive.google.com/file/d/1bgGW7gdigcbnVAqYlMeDt8lf1OeDh0qN/view?usp=sharing' },
+	{ name: 'Neusa', videoUrl: 'https://drive.google.com/file/d/1dihg7K2IZtavXQ8_eRkk4SFZQElB12es/view?usp=sharing' },
+	{ name: 'Nivaldo', videoUrl: 'https://drive.google.com/file/d/1hTgmlEryWJ48Qa3sRqVIYk7_OfrLZARc/view?usp=sharing' },
+	{ name: 'Roney', videoUrl: 'https://drive.google.com/file/d/1iH4M9pscSLWVRjCURJkXKDK9c8mMFKBE/view?usp=sharing' },
+	{ name: 'Rúbia', videoUrl: 'https://drive.google.com/file/d/1lKUw6JMOxunatDxOa_u_WvY5Njz3G4Qs/view?usp=sharing' },
+	{ name: 'Suzana', videoUrl: 'https://drive.google.com/file/d/1qLn7CQg9e23Rc-ccLgRHU_RuimQt2Sp7/view?usp=sharing' },
+	{ name: 'Thaís', videoUrl: 'https://drive.google.com/file/d/1u0jgo7NM3RBSIX1S5V2YCApCRyETHnX8/view?usp=sharing' },
+	{ name: 'Tia Zezé', videoUrl: 'https://drive.google.com/file/d/1vdLfJuUNDxRdhCAQL1DXpDW0OdcU6XMz/view?usp=sharing' },
+	{ name: 'Wânia', videoUrl: 'https://drive.google.com/file/d/1wM24QpqdnylorVZsNalzTJ9QhzjS7h6k/view?usp=sharing' },
+	{ name: 'Zezinho', videoUrl: 'https://drive.google.com/file/d/1x5RkDmk4A32jyOTSZEDQdfs-9mAHe7px/view?usp=sharing' }
+];
+---
+
+<Layout title="Depoimentos - Natal da Família Finazzi">
+	<main>
+		<div class="header">
+			<h1>Depoimentos <span class="text-gradient">Especiais</span></h1>
+			<p class="subtitle">Memórias e histórias da nossa família</p>
+		</div>
+
+		<nav class="navigation">
+			<a href="/">Vídeos por Ano</a>
+			<a href="/depoimentos" class="active">Depoimentos</a>
+		</nav>
+
+		<div class="testimonials-container">
+			{testimonials.map((testimonial) => (
+				<TestimonialCard
+					name={testimonial.name}
+					videoUrl={testimonial.videoUrl}
+				/>
+			))}
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 2rem;
+		width: 1200px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+
+	.header {
+		text-align: center;
+		margin-bottom: 2rem;
+		background: rgba(0, 0, 0, 0.7);
+		padding: 2rem;
+		border-radius: 15px;
+	}
+
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+
+	.subtitle {
+		font-size: 1.5rem;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+
+	.navigation {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		margin-bottom: 3rem;
+	}
+
+	.navigation a {
+		color: white;
+		text-decoration: none;
+		font-size: 1.5rem;
+		padding: 0.5rem 2rem;
+		border-radius: 30px;
+		transition: all 0.3s ease;
+	}
+
+	.navigation a:hover,
+	.navigation a.active {
+		background: rgba(var(--accent), 0.8);
+		transform: translateY(-2px);
+	}
+
+	.testimonials-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		justify-content: center;
+	}
+</style>

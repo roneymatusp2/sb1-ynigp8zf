@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+
+const christmasVideos = [
+	{
+		year: '1995',
+		title: 'Memórias de Natal - Parte 1',
+		videoUrl: 'https://drive.google.com/file/d/1zS4alNqq-iiol_OxIHzVzL7bnCNsZMTq/view?usp=sharing'
+	},
+	{
+		year: '1995',
+		title: 'Memórias de Natal - Parte 2',
+		videoUrl: 'https://drive.google.com/file/d/1MezB_YYRCYaa7ORD2Rr1XUQnZU13guNQ/view?usp=sharing'
+	},
+	{
+		year: '1995',
+		title: 'Memórias de Natal - Parte 3',
+		videoUrl: 'https://drive.google.com/file/d/12fxXkRJhpwX57OULBgXyW89J9P3B5b4y/view?usp=sharing'
+	},
+	{
+		year: '1995',
+		title: 'Memórias de Natal - Parte 4',
+		videoUrl: 'https://drive.google.com/file/d/101pTtJYDW8rhn2NXNUMEkzRcEt-oj5tS/view?usp=sharing'
+	},
+	{
+		year: '1996',
+		title: 'Um Natal Inesquecível',
+		videoUrl: 'https://drive.google.com/file/d/1z6jAhK8Zb1a5W2jC3f7AmgRyVufigfb8/view?usp=sharing'
+	},
+	{
+		year: '1997',
+		title: 'Celebração em Família',
+		videoUrl: 'https://drive.google.com/file/d/1jrwJ40UIMh6q4Fhbi0GpaCXoGmZQvK14/view?usp=sharing'
+	},
+	{
+		year: '1999',
+		title: 'Momentos Especiais',
+		videoUrl: 'https://drive.google.com/file/d/1lKNT7jeABSFdDwtg575a-CyaW7GfQJIR/view?usp=sharing'
+	},
+	{
+		year: '2000',
+		title: 'Encontro de Gerações',
+		videoUrl: 'https://drive.google.com/file/d/1luLfo46O6TUjsEhbYE4iSfzicHjtzZKU/view?usp=sharing'
+	},
+	{
+		year: '2001',
+		title: 'Amor e Tradição',
+		videoUrl: 'https://drive.google.com/file/d/19Vq3A_4TibpXDLul2wb9q03QBf2XUW5f/view?usp=sharing'
+	}
+];
+---
+
+<Layout title="Natal da Família Finazzi">
+	<main>
+		<div class="header">
+			<h1>Natal da <span class="text-gradient">Família Finazzi</span></h1>
+			<p class="subtitle">Mais que uma tradição, um legado de amor</p>
+			<p class="message">Com todo carinho, dedicamos estas memórias aos nossos queridos familiares que, ao longo dos anos, construíram esta linda história de união, fé e amor. Cada sorriso, cada abraço e cada momento compartilhado são tesouros que guardaremos para sempre em nossos corações.</p>
+		</div>
+
+		<nav class="navigation">
+			<a href="/" class="active">Vídeos por Ano</a>
+			<a href="/depoimentos">Depoimentos</a>
+		</nav>
+
+		<div class="videos-container">
+			{christmasVideos.map((video) => (
+				<VideoCard
+					year={video.year}
+					title={video.title}
+					videoUrl={video.videoUrl}
+				/>
+			))}
+		</div>
+		<footer>
+			<p class="creator">✨ Criado e desenvolvido por Roney Nascimento ✨</p>
+		</footer>
+		<audio id="bgMusic" loop>
+			<source src="https://www.youtube.com/watch?v=cRt7mO3SBbk" type="audio/mp3">
+		</audio>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 2rem;
+		width: 1200px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+
+	.header {
+		text-align: center;
+		margin-bottom: 2rem;
+		background: rgba(0, 0, 0, 0.7);
+		padding: 2rem;
+		border-radius: 15px;
+	}
+
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+
+	.subtitle {
+		font-size: 1.5rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin-bottom: 1rem;
+	}
+
+	.message {
+		font-size: 1.2rem;
+		color: rgba(255, 255, 255, 0.8);
+		font-family: 'Mountains of Christmas', cursive;
+		line-height: 1.8;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 1rem;
+		border: 2px solid rgba(var(--accent), 0.3);
+		border-radius: 10px;
+		background: rgba(0, 0, 0, 0.4);
+	}
+
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+
+	.navigation {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		margin-bottom: 3rem;
+	}
+
+	.navigation a {
+		color: white;
+		text-decoration: none;
+		font-size: 1.5rem;
+		padding: 0.5rem 2rem;
+		border-radius: 30px;
+		transition: all 0.3s ease;
+	}
+
+	.navigation a:hover,
+	.navigation a.active {
+		background: rgba(var(--accent), 0.8);
+		transform: translateY(-2px);
+	}
+
+	.videos-container {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	footer {
+		text-align: center;
+		margin-top: 4rem;
+		padding: 1rem;
+		font-size: 0.8rem;
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+	.creator {
+		font-size: 0.7rem;
+		opacity: 0.7;
+		transition: opacity 0.3s ease;
+	}
+
+	.creator:hover {
+		opacity: 1;
+	}
+</style>

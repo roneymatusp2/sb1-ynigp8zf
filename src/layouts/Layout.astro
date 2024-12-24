@@ -1,0 +1,129 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Courgette&display=swap" rel="stylesheet">
+		<title>{title}</title>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const music = document.getElementById('bgMusic');
+				if (music) {
+					music.volume = 0.1;
+					const playMusic = () => {
+						music.play().catch(() => {});
+						document.removeEventListener('click', playMusic);
+					};
+					document.addEventListener('click', playMusic);
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div class="snowflakes" aria-hidden="true">
+			{Array.from({ length: 50 }).map(() => <div class="snowflake">❅</div>)}
+		</div>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 196, 0, 0;
+		--accent-light: 255, 215, 215;
+		--accent-dark: 120, 0, 0;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 40%,
+			white 60%
+		);
+	}
+	html {
+		font-family: 'Courgette', 'Mountains of Christmas', system-ui, sans-serif;
+		background: #0a2a41;
+		background-image: url('/christmas-bg.jpg');
+		background-size: cover;
+		background-attachment: fixed;
+		min-height: 100vh;
+	}
+	
+	.snowflake {
+		color: #fff;
+		font-size: 1em;
+		font-family: Arial;
+		text-shadow: 0 0 5px #000;
+		position: fixed;
+		top: -10%;
+		z-index: 9999;
+		user-select: none;
+		cursor: default;
+		animation-name: snowflake-fall, snowflake-shake;
+		animation-duration: 10s, 3s;
+		animation-timing-function: linear, ease-in-out;
+		animation-iteration-count: infinite, infinite;
+		animation-play-state: running, running;
+	}
+	
+	@keyframes snowflake-fall {
+		0% { top: -10%; }
+		100% { top: 100%; }
+	}
+	
+	@keyframes snowflake-shake {
+		0%, 100% { transform: translateX(0); }
+		50% { transform: translateX(80px); }
+	}
+	
+	.snowflakes {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		pointer-events: none;
+		z-index: 1;
+	}
+	
+	.snowflake:nth-of-type(2n) {
+		animation-delay: 1s, 1s;
+		animation-duration: 12s, 4s;
+	}
+
+	/* Add more Christmas decorations */
+	.snowflake:nth-of-type(3n)::after {
+		content: '🎄';
+		margin-left: 0.5em;
+	}
+
+	.snowflake:nth-of-type(5n)::after {
+		content: '🎅';
+		margin-left: 0.5em;
+	}
+
+	.snowflake:nth-of-type(7n)::after {
+		content: '🎁';
+		margin-left: 0.5em;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>
